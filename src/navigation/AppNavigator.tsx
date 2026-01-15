@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SplashScreen from '../screens/splashscreen/SplashScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import DashboardScreen from '../screens/dashboard/DashboardScreen';
 import ProductScreen from '../screens/product/ProductScreen';
@@ -14,6 +15,7 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen
         name="Dashboard"
@@ -35,17 +37,17 @@ const AuthNavigator = () => {
         component={CategoryScreen}
         options={{ title: 'Category' }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="CategoryForm"
         component={CategoryForm}
         options={{ title: 'Tambah Kategory' }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="Stock"
         component={StockScreen}
         options={{ title: 'Stok' }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="StockForm"
         component={StockFormScreen}
         options={{ title: 'Tambah Stock' }}
