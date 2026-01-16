@@ -1,4 +1,4 @@
-import React, { useState,  useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import {
   View,
@@ -40,10 +40,10 @@ const CategoryScreen = () => {
   };
 
   useFocusEffect(
-  useCallback(() => {
-    fetchCategories();
-  }, [])
-);
+    useCallback(() => {
+      fetchCategories();
+    }, []),
+  );
 
   const handleDelete = (id: number) => {
     Alert.alert('Hapus Kategori', 'Yakin ingin menghapus kategori ini?', [
@@ -98,7 +98,7 @@ const CategoryScreen = () => {
           contentContainerStyle={{ paddingBottom: 120 }}
         />
       )}
- <FabButton
+      <FabButton
         icon="add"
         onPress={() => navigation.navigate('CategoryForm')}
       />
@@ -132,14 +132,18 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 14,
-    backgroundColor: '#f9fafb',
-    borderRadius: 8,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#e5e7eb',
+    padding: 16,
+    backgroundColor: '#ffffff',
+    borderRadius: 14,
+    marginBottom: 12,
+
+    shadowColor: '#000',
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
   },
+
   name: {
     fontSize: 16,
     fontWeight: '600',

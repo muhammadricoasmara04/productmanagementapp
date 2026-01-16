@@ -208,13 +208,18 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 14,
-    backgroundColor: '#f9fafb',
-    borderRadius: 8,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#e5e7eb',
+    padding: 16,
+    backgroundColor: '#ffffff',
+    borderRadius: 14,
+    marginBottom: 12,
+
+    shadowColor: '#000',
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
   },
+
   name: {
     fontSize: 16,
     fontWeight: '600',

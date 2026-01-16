@@ -9,6 +9,7 @@ import CategoryForm from '../screens/category/CategoryForm';
 import ProductFormScreen from '../screens/product/ProductFormScreen';
 import StockScreen from '../screens/stock/StockScreen';
 import StockFormScreen from '../screens/stock/StockFormScreen';
+import ProfileScreen from '../screens/profile/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,7 @@ const AuthNavigator = () => {
         component={StockFormScreen}
         options={{ title: 'Tambah Stock' }}
       />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 };

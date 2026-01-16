@@ -165,14 +165,20 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 16,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    marginTop: 12,
-    elevation: 2,
-  },
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  padding: 16,
+  backgroundColor: '#ffffff',
+  borderRadius: 14,
+  marginBottom: 12,
+
+  shadowColor: '#000',
+  shadowOpacity: 0.06,
+  shadowRadius: 8,
+  shadowOffset: { width: 0, height: 4 },
+  elevation: 3,
+},
+
   title: { fontSize: 16, fontWeight: 'bold' },
   subtitle: { color: '#666', marginTop: 4 },
   fab: {
