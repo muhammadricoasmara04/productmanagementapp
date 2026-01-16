@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
@@ -15,7 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../service/api';
 import * as ImagePicker from 'react-native-image-picker';
 import { Picker } from '@react-native-picker/picker';
-
+import AppInput from '../../components/AppInput';
 
 interface RouteParams {
   mode?: 'add' | 'edit';
@@ -78,7 +77,6 @@ const ProductFormScreen = () => {
     }
   }, [mode, productId]);
 
-  // Pilih gambar
   const pickImage = () => {
     ImagePicker.launchImageLibrary(
       { mediaType: 'photo', includeBase64: false },
@@ -95,7 +93,6 @@ const ProductFormScreen = () => {
     );
   };
 
-  // Simpan produk
   const handleSubmit = async () => {
     if (!namaProduk || !kategoriId) {
       Alert.alert('Error', 'Nama produk dan kategori wajib diisi');
@@ -108,7 +105,6 @@ const ProductFormScreen = () => {
     formData.append('kode_produk', kodeProduk);
 
     if (foto && foto.uri && !foto.uri.startsWith('http')) {
-      // hanya upload file baru
       formData.append('foto_produk', {
         uri: foto.uri,
         type: foto.type || 'image/jpeg',
@@ -147,12 +143,11 @@ const ProductFormScreen = () => {
         {mode === 'add' ? 'Tambah Produk' : 'Edit Produk'}
       </Text>
 
-      <Text style={styles.label}>Nama Produk</Text>
-      <TextInput
-        style={styles.input}
+      <AppInput
+        label="Nama Produk"
+        placeholder="Masukkan nama produk"
         value={namaProduk}
         onChangeText={setNamaProduk}
-        placeholder="Masukkan nama produk"
       />
 
       <Text style={styles.label}>Kategori</Text>
@@ -172,12 +167,11 @@ const ProductFormScreen = () => {
         </Picker>
       </View>
 
-      <Text style={styles.label}>Kode Produk</Text>
-      <TextInput
-        style={styles.input}
+      <AppInput
+        label="Kode Produk"
+        placeholder="Masukkan kode produk"
         value={kodeProduk}
         onChangeText={setKodeProduk}
-        placeholder="Masukkan kode produk"
       />
 
       <Text style={styles.label}>Foto Produk</Text>

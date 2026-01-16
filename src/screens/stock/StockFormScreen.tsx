@@ -47,16 +47,13 @@ const StokFormScreen = ({ navigation, route }: any) => {
   }
 
   try {
-    // 1. ambil semua stok
     const res = await api.get('/stok');
-
-    // 2. cek apakah stok produk sudah ada
     const existingStok = res.data.find(
       (s: any) => s.id_produk === produkId,
     );
 
     if (existingStok) {
-      // ✅ UPDATE stok
+      
       const totalStok =
         Number(existingStok.jumlah_barang) + Number(jumlah);
 
@@ -65,7 +62,7 @@ const StokFormScreen = ({ navigation, route }: any) => {
         jumlah_barang: totalStok,
       });
     } else {
-      // ✅ CREATE stok baru
+     
       await api.post('/stok', {
         id_produk: produkId,
         jumlah_barang: Number(jumlah),

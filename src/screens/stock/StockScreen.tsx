@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../service/api';
 import Navbar from '../../components/Navbar';
 import NavBottom from '../../components/NavBottom';
-
+import FabButton from '../../components/FabButton';
 interface Stok {
   id_stok: number;
   id_produk: number;
@@ -135,6 +135,7 @@ const StokScreen = () => {
               <Icon name="add" size={20} color="#fff" />
               <Text style={styles.addButtonText}>Tambah Stok</Text>
             </TouchableOpacity>
+            
 
             <TouchableOpacity
               style={styles.closeButton}
@@ -145,12 +146,10 @@ const StokScreen = () => {
           </View>
         </View>
       </Modal>
-      <TouchableOpacity
-        style={styles.fab}
-        onPress={() => navigation.navigate('StockForm', { mode: 'add' })}
-      >
-        <Icon name="add" size={28} color="#fff" />
-      </TouchableOpacity>
+      <FabButton
+        icon="add"
+        onPress={() => navigation.navigate('StockForm')}
+      />
       <NavBottom />
     </View>
   );
@@ -184,7 +183,7 @@ const styles = StyleSheet.create({
   fab: {
     position: 'absolute',
     right: 20,
-    bottom: 80, // biar ga ketutup NavBottom
+    bottom: 80, 
     backgroundColor: '#466BFF',
     width: 56,
     height: 56,
