@@ -51,15 +51,12 @@ const DashboardScreen = () => {
       try {
         setLoading(true);
 
-        // fetch produk
         const resProduk = await api.get('/produk');
         setProducts(resProduk.data);
 
-        // fetch kategori
         const resKategori = await api.get('/kategori');
         setCategories(resKategori.data);
 
-        // fetch stok
         const resStok = await api.get('/stok');
         setStocks(resStok.data);
       } catch (err) {
@@ -113,23 +110,23 @@ const DashboardScreen = () => {
     <View style={styles.container}>
       <Navbar title="Dashboard" />
 
-      {/* Ringkasan Statistik */}
       <View style={styles.summaryContainer}>
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryNumber}>{products.length}</Text>
-          <Text style={styles.summaryLabel}>Produk</Text>
+        <View style={[styles.summaryCard, styles.productCardBg]}>
+          <Text style={styles.summaryNumberWhite}>{products.length}</Text>
+          <Text style={styles.summaryLabelWhite}>Produk</Text>
         </View>
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryNumber}>{categories.length}</Text>
-          <Text style={styles.summaryLabel}>Kategori</Text>
+
+        <View style={[styles.summaryCard, styles.categoryCardBg]}>
+          <Text style={styles.summaryNumberWhite}>{categories.length}</Text>
+          <Text style={styles.summaryLabelWhite}>Kategori</Text>
         </View>
-        <View style={styles.summaryCard}>
-          <Text style={styles.summaryNumber}>{stocks.length}</Text>
-          <Text style={styles.summaryLabel}>Stok</Text>
+
+        <View style={[styles.summaryCard, styles.stockCardBg]}>
+          <Text style={styles.summaryNumberWhite}>{stocks.length}</Text>
+          <Text style={styles.summaryLabelWhite}>Stok</Text>
         </View>
       </View>
 
-      {/* Produk Terbaru */}
       <View style={styles.latestProductsHeader}>
         <Text style={styles.latestTitle}>Produk Terbaru</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Product')}>
@@ -139,7 +136,7 @@ const DashboardScreen = () => {
 
       {products.length > 0 ? (
         <FlatList
-          data={products.slice(0, 5)} // 5 produk terbaru
+          data={products.slice(0, 5)}
           keyExtractor={item => item.id_produk.toString()}
           renderItem={renderProduct}
           contentContainerStyle={{ paddingBottom: 120 }}
@@ -158,7 +155,7 @@ export default DashboardScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#dedede',
     paddingHorizontal: 16,
     paddingTop: 20,
   },
@@ -173,7 +170,6 @@ const styles = StyleSheet.create({
     color: 'red',
   },
 
-  // Summary
   summaryContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -198,8 +194,27 @@ const styles = StyleSheet.create({
     color: '#555',
     marginTop: 4,
   },
+  productCardBg: {
+    backgroundColor: '#2563EB', 
+  },
+  categoryCardBg: {
+    backgroundColor: '#16A34A', 
+  },
+  stockCardBg: {
+    backgroundColor: '#F59E0B', 
+  },
 
-  // Latest products
+  summaryNumberWhite: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  summaryLabelWhite: {
+    fontSize: 14,
+    color: 'rgba(255,255,255,0.9)',
+    marginTop: 4,
+  },
+
   latestProductsHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',

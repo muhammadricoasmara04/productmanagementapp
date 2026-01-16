@@ -181,7 +181,7 @@ const StokScreen = () => {
 export default StokScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
+  container: { flex: 1, padding: 16, backgroundColor: '#dedede' },
   listContent: {
     paddingTop: 80,
     paddingBottom: 100,

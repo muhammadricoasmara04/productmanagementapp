@@ -8,7 +8,7 @@ const NavBottom = () => {
   const route = useRoute();
 
   const menus = [
-    { name: 'Beranda', icon: 'home', screen: 'Dashboard' },
+    { name: 'Dashboard', icon: 'home', screen: 'Dashboard' },
     { name: 'Produk', icon: 'add-box', screen: 'Product' },
     { name: 'Kategori', icon: 'category', screen: 'Category' },
     { name: 'Stok', icon: 'store', screen: 'Stock' },
