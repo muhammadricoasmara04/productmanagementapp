@@ -29,10 +29,10 @@ const CategoryForm = () => {
   const isEdit = !!category;
 
   useEffect(() => {
-  if (category) {
-    setNamaKategori(category.nama_kategori);
-  }
-}, [category]);
+    if (category) {
+      setNamaKategori(category.nama_kategori);
+    }
+  }, [category]);
 
   const handleSubmit = async () => {
     if (!namaKategori.trim()) {
@@ -91,6 +91,12 @@ const CategoryForm = () => {
             </Text>
           )}
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={styles.backText}>Kembali</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -127,6 +133,18 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
+    fontWeight: '600',
+  },
+  backButton: {
+    marginTop: 12,
+    padding: 14,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#466BFF',
+    alignItems: 'center',
+  },
+  backText: {
+    color: '#466BFF',
     fontWeight: '600',
   },
 });

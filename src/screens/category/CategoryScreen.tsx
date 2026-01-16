@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState,  useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -10,6 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../service/api';
+import FabButton from '../../components/FabButton';
 import Navbar from '../../components/Navbar';
 import NavBottom from '../../components/NavBottom';
 import { useNavigation } from '@react-navigation/native';
@@ -37,9 +39,11 @@ const CategoryScreen = () => {
     }
   };
 
-  useEffect(() => {
+  useFocusEffect(
+  useCallback(() => {
     fetchCategories();
-  }, []);
+  }, [])
+);
 
   const handleDelete = (id: number) => {
     Alert.alert('Hapus Kategori', 'Yakin ingin menghapus kategori ini?', [
@@ -91,19 +95,13 @@ const CategoryScreen = () => {
           data={categories}
           keyExtractor={item => item.id_kategori.toString()}
           renderItem={renderItem}
-          ListHeaderComponent={
-            <TouchableOpacity
-              style={styles.addButton}
-              onPress={() => navigation.navigate('CategoryForm')}
-            >
-              <Icon name="add" size={24} color="#fff" />
-              <Text style={styles.addText}>Tambah Kategori</Text>
-            </TouchableOpacity>
-          }
           contentContainerStyle={{ paddingBottom: 120 }}
         />
       )}
-
+ <FabButton
+        icon="add"
+        onPress={() => navigation.navigate('CategoryForm')}
+      />
       <NavBottom />
     </View>
   );

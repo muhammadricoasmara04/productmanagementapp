@@ -5,7 +5,7 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import DashboardScreen from '../screens/dashboard/DashboardScreen';
 import ProductScreen from '../screens/product/ProductScreen';
 import CategoryScreen from '../screens/category/CategoryScreen';
-import CategoryForm from '../screens/category/CaregoryForm';
+import CategoryForm from '../screens/category/CategoryForm';
 import ProductFormScreen from '../screens/product/ProductFormScreen';
 import StockScreen from '../screens/stock/StockScreen';
 import StockFormScreen from '../screens/stock/StockFormScreen';
