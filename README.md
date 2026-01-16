@@ -45,16 +45,16 @@ node -v
 npm -v
 react-native --version
 
-3️⃣ Install Dependencies
+1. Install Dependencies
 npm install
 atau
 yarn install
 
-4️⃣ Jalankan Metro Bundler
+2 Jalankan Metro Bundler
 npx react-native start
 Biarkan terminal ini tetap berjalan
 
-5️⃣ Jalankan Aplikasi Android
+3 Jalankan Aplikasi Android
 
 Buka terminal baru:
 
@@ -67,7 +67,7 @@ Emulator Android sudah berjalan, atau
 
 Device fisik sudah terhubung dengan USB Debugging aktif
 
-6️⃣ Jika Terjadi Error / Crash (Opsional)
+4 Jika Terjadi Error / Crash (Opsional)
 npx react-native start --reset-cache
 cd android
 ./gradlew clean
