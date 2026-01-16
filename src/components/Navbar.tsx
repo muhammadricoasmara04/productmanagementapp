@@ -43,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = ({ title }) => {
   };
   return (
     <>
-      {/* Overlay untuk klik di luar */}
       {open && (
         <Pressable style={styles.overlay} onPress={() => setOpen(false)} />
       )}
@@ -58,7 +57,6 @@ const Navbar: React.FC<NavbarProps> = ({ title }) => {
           <Icon name="account-circle" size={32} color="#111" />
         </TouchableOpacity>
 
-        {/* Dropdown Menu */}
         {open && (
           <View style={styles.menu}>
             <TouchableOpacity
@@ -74,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ title }) => {
 
             <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
               <Icon name="logout" size={20} color="red" />
-              <Text style={[styles.menuText, { color: 'red' }]}>Logout</Text>
+              <Text style={styles.menuLogout}>Logout</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -87,21 +85,22 @@ export default Navbar;
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#466BFF',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#003366',
-    position: 'absolute', // <- ini bikin fix di atas
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 100, // <- supaya di atas konten
+    zIndex: 100, 
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
+    color:'#FFFFFF'
   },
   profileButton: {
     position: 'absolute',
@@ -138,5 +137,10 @@ const styles = StyleSheet.create({
   menuText: {
     fontSize: 14,
     fontWeight: '500',
+  },
+  menuLogout: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: 'red',
   },
 });

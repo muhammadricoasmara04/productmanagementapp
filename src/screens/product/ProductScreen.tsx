@@ -16,6 +16,7 @@ import Navbar from '../../components/Navbar';
 import FabButton from '../../components/FabButton';
 import NavBottom from '../../components/NavBottom';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { formatDateID } from '../../utils/formatedate';
 
 interface Product {
   id_produk: number;
@@ -24,6 +25,7 @@ interface Product {
   kode_produk: string;
   foto_url?: string;
   stok?: number;
+  tgl_register?: string;
 }
 
 interface Stok {
@@ -118,7 +120,15 @@ const ProductScreen = () => {
           <Icon name="edit" size={22} color="#2563eb" />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleDelete(item.id_produk)}>
+        <TouchableOpacity
+          onPress={() => {
+            if (item.stok && item.stok > 0) {
+              Alert.alert('Tidak bisa dihapus', 'Produk masih memiliki stok');
+              return;
+            }
+            handleDelete(item.id_produk);
+          }}
+        >
           <Icon name="delete" size={22} color="red" />
         </TouchableOpacity>
       </View>
@@ -169,6 +179,9 @@ const ProductScreen = () => {
             </Text>
             <Text style={styles.modalText}>
               Kategori: {selectedProduct?.nama_kategori}
+            </Text>
+            <Text>
+              Dibuat: {formatDateID(selectedProduct?.tgl_register)}
             </Text>
             <Text style={styles.modalText}>Stok: {selectedProduct?.stok}</Text>
 

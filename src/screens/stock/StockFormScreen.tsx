@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, Alert, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../../service/api';
+import AppButton from '../../components/AppButton';
+import AppInput from '../../components/AppInput';
 
 interface Product {
   id_produk: number;
@@ -19,64 +14,65 @@ interface Product {
 const StokFormScreen = ({ navigation, route }: any) => {
   const [produkList, setProdukList] = useState<Product[]>([]);
   const [produkId, setProdukId] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
   const [jumlah, setJumlah] = useState('');
   const { id_produk } = route.params || {};
   useEffect(() => {
     const fetchProduk = async () => {
       try {
+        setLoading(true);
         const res = await api.get('/produk');
         setProdukList(res.data);
       } catch {
         Alert.alert('Error', 'Gagal mengambil produk');
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProduk();
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     if (id_produk) {
       setProdukId(id_produk);
     }
   }, [id_produk]);
 
   const handleSubmit = async () => {
-  if (!produkId || !jumlah) {
-    Alert.alert('Error', 'Produk dan jumlah wajib diisi');
-    return;
-  }
-
-  try {
-    const res = await api.get('/stok');
-    const existingStok = res.data.find(
-      (s: any) => s.id_produk === produkId,
-    );
-
-    if (existingStok) {
-      
-      const totalStok =
-        Number(existingStok.jumlah_barang) + Number(jumlah);
-
-      await api.put(`/stok/${existingStok.id_stok}`, {
-        id_produk: produkId,
-        jumlah_barang: totalStok,
-      });
-    } else {
-     
-      await api.post('/stok', {
-        id_produk: produkId,
-        jumlah_barang: Number(jumlah),
-      });
+    if (!produkId || !jumlah) {
+      Alert.alert('Error', 'Produk dan jumlah wajib diisi');
+      return;
     }
 
-    Alert.alert('Sukses', 'Stok berhasil ditambahkan');
-    navigation.goBack();
-  } catch (error) {
-    console.log(error);
-    Alert.alert('Error', 'Gagal menambahkan stok');
-  }
-};
+    try {
+      setLoading(true);
+      const res = await api.get('/stok');
+      const existingStok = res.data.find((s: any) => s.id_produk === produkId);
 
+      if (existingStok) {
+        const totalStok = Number(existingStok.jumlah_barang) + Number(jumlah);
+
+        await api.put(`/stok/${existingStok.id_stok}`, {
+          id_produk: produkId,
+          jumlah_barang: totalStok,
+        });
+      } else {
+        await api.post('/stok', {
+          id_produk: produkId,
+          jumlah_barang: Number(jumlah),
+        });
+      }
+
+      Alert.alert('Sukses', 'Stok berhasil ditambahkan');
+      navigation.goBack();
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Error', 'Gagal menambahkan stok');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -96,19 +92,21 @@ const StokFormScreen = ({ navigation, route }: any) => {
           ))}
         </Picker>
       </View>
-
-      <Text style={styles.label}>Jumlah Stok Masuk</Text>
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
+      <AppInput
+        label="Jumlah"
+        placeholder="Masukkan jumlah"
         value={jumlah}
         onChangeText={setJumlah}
-        placeholder="Masukkan jumlah"
+        keyboardType="numeric"
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Tambah Stok</Text>
-      </TouchableOpacity>
+      <AppButton title="Tambah Stok" onPress={handleSubmit} loading={loading} />
+
+      <AppButton
+        title="Kembali"
+        variant="secondary"
+        onPress={() => navigation.goBack()}
+      />
     </View>
   );
 };
@@ -158,4 +156,3 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-

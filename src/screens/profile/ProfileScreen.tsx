@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Image,
-  TouchableOpacity,
   Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -60,7 +59,7 @@ const ProfileScreen = () => {
 
   return (
     <View style={styles.container}>
-    <Navbar title="Profile" />
+      <Navbar title="Profile" />
       <Image
         source={{ uri: 'https://i.pravatar.cc/300' }}
         style={styles.avatar}
@@ -70,10 +69,7 @@ const ProfileScreen = () => {
       <Text style={styles.email}>{user.email}</Text>
 
       <View style={styles.buttonWrapper}>
-        <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
-
+        <AppButton title="Logout" variant="danger" onPress={handleLogout} />
         <AppButton title="Kembali" onPress={() => navigation.goBack()} />
       </View>
     </View>
@@ -103,21 +99,21 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginTop: 4,
   },
- buttonWrapper: {
-  width: '100%',
-  paddingHorizontal: 24,
-  marginTop: 24,
-},
-logoutBtn: {
-  backgroundColor: '#EF4444',
-  paddingVertical: 14,
-  borderRadius: 8,
-  alignItems: 'center',
-  marginBottom: 12,
-},
-logoutText: {
-  color: '#fff',
-  fontWeight: '600',
-  fontSize: 16,
-},
+  buttonWrapper: {
+    width: '100%',
+    paddingHorizontal: 24,
+    marginTop: 24,
+  },
+  logoutBtn: {
+    backgroundColor: '#EF4444',
+    paddingVertical: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  logoutText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
 });

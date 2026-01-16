@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  ActivityIndicator,
-} from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import api from '../../service/api';
 import Navbar from '../../components/Navbar';
+import AppButton from '../../components/AppButton';
+import AppInput from '../../components/AppInput';
 
 interface Category {
   id_kategori: number;
@@ -43,19 +37,16 @@ const CategoryForm = () => {
     setLoading(true);
     try {
       if (isEdit) {
-        // UPDATE
         await api.put(`/kategori/${category.id_kategori}`, {
           nama_kategori: namaKategori,
         });
         Alert.alert('Sukses', 'Kategori berhasil diperbarui');
       } else {
-        // CREATE
         await api.post('/kategori', {
           nama_kategori: namaKategori,
         });
         Alert.alert('Sukses', 'Kategori berhasil ditambahkan');
       }
-
       navigation.goBack();
     } catch (err) {
       console.log('Save category error:', err);
@@ -70,33 +61,24 @@ const CategoryForm = () => {
       <Navbar title={isEdit ? 'Edit Kategori' : 'Tambah Kategori'} />
 
       <View style={styles.form}>
-        <Text style={styles.label}>Nama Kategori</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukkan nama kategori"
-          value={namaKategori}
-          onChangeText={setNamaKategori}
-        />
 
-        <TouchableOpacity
-          style={styles.button}
+         <AppInput
+        label="Nama Produk"
+        placeholder="Masukkan nama produk"
+        value={namaKategori}
+        onChangeText={setNamaKategori}
+      />
+
+        <AppButton
+          title={isEdit ? 'Update' : 'Simpan'}
           onPress={handleSubmit}
-          disabled={loading}
-        >
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <Text style={styles.buttonText}>
-              {isEdit ? 'Update' : 'Simpan'}
-            </Text>
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.backButton}
+          loading={loading}
+        />
+        <AppButton
+          title="Kembali"
+          variant="secondary"
           onPress={() => navigation.goBack()}
-        >
-          <Text style={styles.backText}>Kembali</Text>
-        </TouchableOpacity>
+        />
       </View>
     </View>
   );

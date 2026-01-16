@@ -8,7 +8,7 @@ const NavBottom = () => {
   const route = useRoute();
 
   const menus = [
-    { name: 'Home', icon: 'home', screen: 'Dashboard' },
+    { name: 'Beranda', icon: 'home', screen: 'Dashboard' },
     { name: 'Produk', icon: 'add-box', screen: 'Product' },
     { name: 'Kategori', icon: 'category', screen: 'Category' },
     { name: 'Stok', icon: 'store', screen: 'Stock' },
@@ -28,7 +28,7 @@ const NavBottom = () => {
             <Icon
               name={menu.icon}
               size={26}
-              color={isActive ? '#003366' : '#9CA3AF'}
+              color={isActive ? '#FFFFFF' : '#000000'}
             />
             <Text style={[styles.label, isActive && styles.activeLabel]}>
               {menu.name}
@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     justifyContent: 'space-around',
     alignItems: 'center',
-
-    // shadow
     elevation: 6,
     shadowColor: '#000',
     shadowOpacity: 1.1,
@@ -69,10 +67,10 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     marginTop: 4,
-    color: '#9CA3AF',
+    color: '#000000',
   },
   activeLabel: {
-    color: '#003366',
+    color: '#FFFFFF',
     fontWeight: '600',
   },
 });

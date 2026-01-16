@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  ActivityIndicator,
   Image,
   Alert,
   ScrollView,
@@ -15,6 +14,7 @@ import api from '../../service/api';
 import * as ImagePicker from 'react-native-image-picker';
 import { Picker } from '@react-native-picker/picker';
 import AppInput from '../../components/AppInput';
+import AppButton from '../../components/AppButton';
 
 interface RouteParams {
   mode?: 'add' | 'edit';
@@ -183,26 +183,17 @@ const ProductFormScreen = () => {
         )}
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.submitButton}
+      <AppButton
+        title={mode === 'add' ? 'Tambah' : 'Update'}
         onPress={handleSubmit}
-        disabled={loading}
-      >
-        {loading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.submitText}>
-            {mode === 'add' ? 'Tambah' : 'Update'}
-          </Text>
-        )}
-      </TouchableOpacity>
+        loading={loading}
+      />
 
-      <TouchableOpacity
-        style={styles.cancelButton}
+      <AppButton
+        title="Kembali"
+        variant="secondary"
         onPress={() => navigation.goBack()}
-      >
-        <Text style={styles.cancelText}>Kembali</Text>
-      </TouchableOpacity>
+      />
     </ScrollView>
   );
 };

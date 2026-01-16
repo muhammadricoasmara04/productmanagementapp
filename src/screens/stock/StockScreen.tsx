@@ -7,6 +7,7 @@ import {
   Alert,
   StyleSheet,
   Modal,
+  Image,
 } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -20,6 +21,7 @@ interface Stok {
   nama_produk: string;
   kode_produk: string;
   jumlah_barang: number;
+  foto_url?: string;
 }
 
 const StokScreen = () => {
@@ -32,8 +34,23 @@ const StokScreen = () => {
   const fetchStok = async () => {
     setLoading(true);
     try {
-      const res = await api.get('/stok');
-      setStokList(res.data);
+      const [stokRes, produkRes] = await Promise.all([
+        api.get('/stok'),
+        api.get('/produk'),
+      ]);
+
+      const mergedData = stokRes.data.map((stok: Stok) => {
+        const produk = produkRes.data.find(
+          (p: any) => p.id_produk === stok.id_produk,
+        );
+
+        return {
+          ...stok,
+          foto_url: produk?.foto_url,
+        };
+      });
+
+      setStokList(mergedData);
     } catch (error) {
       console.log(error);
       Alert.alert('Error', 'Gagal mengambil data stok');
@@ -112,6 +129,16 @@ const StokScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Detail Stok</Text>
+            {selectedStok?.foto_url ? (
+              <Image
+                source={{ uri: selectedStok.foto_url }}
+                style={styles.productImage}
+              />
+            ) : (
+              <View style={styles.noImage}>
+                <Text style={styles.noImageText}>No Image</Text>
+              </View>
+            )}
 
             <Text style={styles.modalText}>
               Produk: {selectedStok?.nama_produk}
@@ -135,7 +162,6 @@ const StokScreen = () => {
               <Icon name="add" size={20} color="#fff" />
               <Text style={styles.addButtonText}>Tambah Stok</Text>
             </TouchableOpacity>
-            
 
             <TouchableOpacity
               style={styles.closeButton}
@@ -146,10 +172,7 @@ const StokScreen = () => {
           </View>
         </View>
       </Modal>
-      <FabButton
-        icon="add"
-        onPress={() => navigation.navigate('StockForm')}
-      />
+      <FabButton icon="add" onPress={() => navigation.navigate('StockForm')} />
       <NavBottom />
     </View>
   );
@@ -164,26 +187,26 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   card: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  padding: 16,
-  backgroundColor: '#ffffff',
-  borderRadius: 14,
-  marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 16,
+    backgroundColor: '#ffffff',
+    borderRadius: 14,
+    marginBottom: 12,
 
-  shadowColor: '#000',
-  shadowOpacity: 0.06,
-  shadowRadius: 8,
-  shadowOffset: { width: 0, height: 4 },
-  elevation: 3,
-},
+    shadowColor: '#000',
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
+  },
 
   title: { fontSize: 16, fontWeight: 'bold' },
   subtitle: { color: '#666', marginTop: 4 },
   fab: {
     position: 'absolute',
     right: 20,
-    bottom: 80, 
+    bottom: 80,
     backgroundColor: '#466BFF',
     width: 56,
     height: 56,
@@ -240,6 +263,24 @@ const styles = StyleSheet.create({
   },
 
   closeText: {
+    color: '#6b7280',
+  },
+  productImage: {
+    width: '100%',
+    height: 180,
+    borderRadius: 12,
+    marginBottom: 12,
+  },
+  noImage: {
+    width: '100%',
+    height: 180,
+    borderRadius: 12,
+    backgroundColor: '#e5e7eb',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  noImageText: {
     color: '#6b7280',
   },
 });
