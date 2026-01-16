@@ -1,11 +1,11 @@
-# 📦 Product Management App
+# Product Management App
 
 Aplikasi mobile berbasis **React Native CLI** untuk mengelola **produk, kategori, dan stok**.  
 Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis token.
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 - Manajemen Produk (Tambah, Edit, Hapus)
 - Manajemen Kategori
 - Manajemen Stok Produk
@@ -17,7 +17,7 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 - **React Native CLI**
 - **TypeScript**
 - **React Navigation**

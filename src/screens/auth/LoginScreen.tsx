@@ -67,28 +67,30 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.pma}>Product Management App</Text>
-      <Text style={styles.title}>Login</Text>
-      <AppInput
-        label="Email"
-        placeholder="email@example.com"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
+      <View style={styles.card}>
+        <Text style={styles.pma}>Product Management App</Text>
+        <Text style={styles.title}>Login</Text>
+        <AppInput
+          label="Email"
+          placeholder="email@example.com"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
 
-      <AppInput
-        label="Password"
-        placeholder="********"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      {loading ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <AppButton title="Login" onPress={onLogin} />
-      )}
+        <AppInput
+          label="Password"
+          placeholder="********"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        {loading ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <AppButton title="Login" onPress={onLogin} />
+        )}
+      </View>
     </View>
   );
 };
@@ -100,18 +102,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#E6EEFF',
   },
   pma: {
-    fontSize: 30,
+    fontSize: 36,
     fontWeight: '700',
     textAlign: 'center',
+    color: '#466BFF',
   },
   title: {
     fontSize: 24,
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: 32,
+    color: '#466BFF',
+    marginTop: 16,
+  },
+  card: {
+    backgroundColor: '#D9E4FF',
+    padding: 24,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 6,
   },
   field: {
     marginBottom: 16,
