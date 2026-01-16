@@ -52,16 +52,12 @@ const LoginScreen = () => {
             error.response.data?.message || 'Terjadi kesalahan',
           );
         }
-      }
-      // Jika request terkirim tapi tidak ada response (network error)
-      else if (error.request) {
+      } else if (error.request) {
         Alert.alert(
           'Network Error',
           'Tidak dapat terhubung ke server. Periksa koneksi internet Anda.',
         );
-      }
-      // Error lainnya
-      else {
+      } else {
         Alert.alert('Error', 'Terjadi kesalahan yang tidak diketahui');
       }
     } finally {
@@ -71,6 +67,7 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.pma}>Product Management App</Text>
       <Text style={styles.title}>Login</Text>
       <AppInput
         label="Email"
@@ -98,14 +95,17 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 
-/* ================= STYLES ================= */
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 24,
     backgroundColor: '#FFFFFF',
+  },
+  pma: {
+    fontSize: 30,
+    fontWeight: '700',
+    textAlign: 'center',
   },
   title: {
     fontSize: 24,
