@@ -72,6 +72,11 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 ## <img src="src/assets/output/o-profilescreen.png" width="300" />
 
 ---
+### Demo Video
+Video demo aplikasi (5 menit) bisa ditonton di sini:  
+[Klik untuk menonton video](https://drive.google.com/file/d/1_GNFbozoepZZvBOLL_Y3tzHPwUmq3dtq/preview)
+---
+
 
 ## 🚀 Cara Instalasi & Menjalankan Aplikasi
 ### 1️⃣ Prasyarat
