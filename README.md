@@ -32,30 +32,31 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 ## Hasil Output Aplikasi
 
 ### Splash Screen
-![Splash Screen](src/assets/output/o-splashscreen.png)
+<img src="src/assets/output/o-splashscreen.png" width="300" />
 
 ### Login Screen
-![Login Screen](src/assets/output/o-loginscreen.png)
+<img src="src/assets/output/o-loginscreen.png" width="300" />
 
 ### Dashboard
-![Dashboard](src/assets/output/o-dashboardscreen.png)
+<img src="src/assets/output/o-dashboardscreen.png" width="300" />
 
 ### Product Screen
-![Product Screen](src/assets/output/o-productscreen.png)
-![Modal Product On Klik](src/assets/output/o-modalproduct.png)
-![Product Form](src/assets/output/o-productform.png)
+<img src="src/assets/output/o-productscreen.png" width="300" />
+<img src="src/assets/output/o-modalproduct.png" width="300" />
+<img src="src/assets/output/o-productform.png" width="300" />
 
 ### Kategori Screen
-![Category Screen](src/assets/output/o-categoryscreen.png)
-![Category Form](src/assets/output/o-categoryform.png)
+<img src="src/assets/output/o-categoryscreen.png" width="300" />
+<img src="src/assets/output/o-categoryform.png" width="300" />
 
-### Kategori Screen
-![Stock Screen](src/assets/output/o-stockscreen.png)
-![Modal Stock On Klik](src/assets/output/o-modalstock.png)
-![Stock Form](src/assets/output/o-stockform.png)
+### Stock Screen
+<img src="src/assets/output/o-stockscreen.png" width="300" />
+<img src="src/assets/output/o-modalstock.png" width="300" />
+<img src="src/assets/output/o-stockform.png" width="300" />
 
 ### Profile Screen
-![Profile Screen](src/assets/output/o-profilescreen.png)
+<img src="src/assets/output/o-profilescreen.png" width="300" />
+---
 
 ## 🚀 Cara Instalasi & Menjalankan Aplikasi
 
