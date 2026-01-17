@@ -73,3 +73,32 @@ cd android
 ./gradlew clean
 cd ..
 npx react-native run-android
+
+
+## Hasil Output Aplikasi
+
+### Splash Screen
+![Splash Screen](src/assets/output/o-splashscreen.png)
+
+### Login Screen
+![Login Screen](src/assets/output/o-loginscreen.png)
+
+### Dashboard
+![Dashboard](src/assets/output/o-dashboardscreen.png)
+
+### Product Screen
+![Product Screen](src/assets/output/o-productscreen.png)
+![Modal Product On Klik](src/assets/output/o-modalproduct.png)
+![Product Form](src/assets/output/o-productform.png)
+
+### Kategori Screen
+![Category Screen](src/assets/output/o-categoryscreen.png)
+![Category Form](src/assets/output/o-categoryform.png)
+
+### Kategori Screen
+![Stock Screen](src/assets/output/o-stockscreen.png)
+![Modal Stock On Klik](src/assets/output/o-modalstock.png)
+![Stock Form](src/assets/output/o-stockform.png)
+
+### Profile Screen
+![Profile Screen](src/assets/output/o-profilescreen.png)
