@@ -11,8 +11,9 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 - Manajemen Kategori
 - Manajemen Stok Produk
 - Upload & preview gambar produk
-- Dashboard ringkasan (Produk, Kategori, Stok)
+- Dashboard ringkasan (Produk, Kategori)
 - Navigasi Bottom Tab
+- Navigasi Navbar untuk Profile
 - Reusable Component (Button, Input, Navbar)
 - Autentikasi Token (Async Storage)
 
@@ -23,6 +24,7 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 - **React Native CLI**
 - **TypeScript**
 - **React Navigation**
+- **StyleSheet**
 - **Axios**
 - **Async Storage**
 - **React Native Vector Icons**
