@@ -6,6 +6,7 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 ---
 
 ## Fitur Utama
+
 - Manajemen Produk (Tambah, Edit, Hapus)
 - Manajemen Kategori
 - Manajemen Stok Produk
@@ -18,6 +19,7 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 ---
 
 ## Teknologi yang Digunakan
+
 - **React Native CLI**
 - **TypeScript**
 - **React Navigation**
@@ -32,36 +34,50 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 ## Hasil Output Aplikasi
 
 ### Splash Screen
+
 <img src="src/assets/output/o-splashscreen.png" width="300" />
 
 ### Login Screen
+
 <img src="src/assets/output/o-loginscreen.png" width="300" />
 
-### Dashboard
+### Dashboard Screen
+
 <img src="src/assets/output/o-dashboardscreen.png" width="300" />
 
 ### Product Screen
-<img src="src/assets/output/o-productscreen.png" width="300" />
-<img src="src/assets/output/o-modalproduct.png" width="300" />
-<img src="src/assets/output/o-productform.png" width="300" />
 
-### Kategori Screen
-<img src="src/assets/output/o-categoryscreen.png" width="300" />
-<img src="src/assets/output/o-categoryform.png" width="300" />
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="src/assets/output/o-productscreen.png" width="200" />
+  <img src="src/assets/output/o-modalproduct.png" width="200" />
+  <img src="src/assets/output/o-productform.png" width="200" />
+</div>
+
+### Category Screen
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="src/assets/output/o-categoryscreen.png" width="200" />
+  <img src="src/assets/output/o-categoryform.png" width="200" />
+</div>
 
 ### Stock Screen
-<img src="src/assets/output/o-stockscreen.png" width="300" />
-<img src="src/assets/output/o-modalstock.png" width="300" />
-<img src="src/assets/output/o-stockform.png" width="300" />
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="src/assets/output/o-stockscreen.png" width="200" />
+  <img src="src/assets/output/o-modalstock.png" width="200" />
+  <img src="src/assets/output/o-stockform.png" width="200" />
+</div>
 
 ### Profile Screen
-<img src="src/assets/output/o-profilescreen.png" width="300" />
+## <img src="src/assets/output/o-profilescreen.png" width="300" />
+
 ---
 
 ## 🚀 Cara Instalasi & Menjalankan Aplikasi
-
 ### 1️⃣ Prasyarat
+
 Pastikan sudah terinstall di komputer:
+
 - **Node.js** (disarankan versi LTS / ≥ v20)
 - **npm** atau **yarn**
 - **React Native CLI**
@@ -69,6 +85,7 @@ Pastikan sudah terinstall di komputer:
 - **Android SDK & Emulator** atau device Android fisik
 
 Cek instalasi:
+
 ```bash
 node -v
 npm -v
@@ -102,3 +119,4 @@ cd android
 ./gradlew clean
 cd ..
 npx react-native run-android
+```
