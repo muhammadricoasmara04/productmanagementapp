@@ -73,7 +73,7 @@ Aplikasi ini mendukung CRUD data, pengelolaan stok, serta autentikasi berbasis t
 
 ---
 ### Demo Video
-Video demo aplikasi (5 menit) bisa ditonton di sini:  
+Video demo aplikasi bisa ditonton di sini:  
 [Klik untuk menonton video](https://drive.google.com/file/d/1_GNFbozoepZZvBOLL_Y3tzHPwUmq3dtq/preview)
 ---
 
