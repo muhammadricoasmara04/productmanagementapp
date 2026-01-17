@@ -12,17 +12,12 @@ export const login = async (payload: LoginPayload) => {
 
 export const logout = async () => {
   try {
-    // OPTIONAL → kalau backend ada endpoint logout
     await api.post('/auth/logout');
   } catch (error) {
     console.log(error);
-    // kalau backend ga wajib logout, abaikan error
   } finally {
-    // HAPUS DATA AUTH
     await AsyncStorage.removeItem('token');
     await AsyncStorage.removeItem('user');
-
-    // HAPUS HEADER AUTH
     delete api.defaults.headers.common['Authorization'];
   }
 };

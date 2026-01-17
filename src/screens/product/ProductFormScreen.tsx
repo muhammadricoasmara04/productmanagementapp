@@ -37,7 +37,6 @@ const ProductFormScreen = () => {
   const [kategoriId, setKategoriId] = useState<number | null>(null);
   const [kodeProduk, setKodeProduk] = useState('');
 
-  // Jika mode edit, ambil data produk
   useEffect(() => {
     const fetchKategori = async () => {
       try {

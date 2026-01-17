@@ -13,7 +13,7 @@ const SplashScreen = ({ navigation }: any) => {
         } else {
           navigation.replace('Login');
         }
-      }, 1500); // biar smooth
+      }, 1500); 
     };
 
     init();

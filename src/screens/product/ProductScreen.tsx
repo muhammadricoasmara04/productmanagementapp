@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#16a34a', // hijau = stok
+    backgroundColor: '#16a34a',
     padding: 14,
     borderRadius: 8,
     marginTop: 12,
